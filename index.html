@@ -9,33 +9,60 @@
   <body>
     <div id="app">
       <!-- TODO: Buatlah sebuah header dengan id todo-title -->
+      <h1 id="todo-title">To-Do List</h1>
       <!-- TODO: Buatlah sebuah subtitle dengan id todo-subtitle -->
-
+      <h2 id="todo-subtitle">Today I need to:</h2>
       <!-- Section: input -->
+      <form>
       <!-- TODO: Buatlah sebuah input bertipe text dengan id todo-input -->
-      <!-- TODO: Buatlah sebuah button dengan id todo-submit -->
-
-      <!-- Section output -->
-      <!-- TODO: Buatlah sebuah <ul> dengan id todo-output -->
+        <input type="text" id="todo-input" name="notes" placeholder="tulis disini"/>
+      
+        <!-- TODO: Buatlah sebuah button dengan id todo-submit -->
+        <input type="button" id=todo-submit value="submit"/>
+        <!-- Section output -->
+        <!-- TODO: Buatlah sebuah <ul> dengan id todo-output -->
+        </form>
+        <ul id=todo-output>
+          
+        </ul>
     </div>
 
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
+      ////<li><b></b></li>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
       let button;
       let input;
       let output;
-
+      
+      const enter=document.getElementById("todo-submit");
+      const ins=document.getElementById("todo-input");
+      const out=document.getElementById("todo-output");
+     
+      //enter.onclick = function() {}
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
-      function fnClickHandler(toDoItem) {}
-
+      function fnClickHandler(toDoItem) {
+        input = ins.value; 
+        output = document.createElement("li");
+        output.innerText = input;
+        out.append(output);
+        ins.value = ""; // clear the value
+        
+      }
+      
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
-      
+      enter.onclick = fnClickHandler
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
+      const tangkaptombol =(event) =>{
+        const  tombol=event.key
+        if(tombol==="Enter"){
+          fnClickHandler()}
+      }
+      document.addEventListener("keypress",tangkaptombol)
     </script>
   </body>
 </html>
